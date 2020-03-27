@@ -15,7 +15,7 @@ exports.getBootcamp = (req, res, next) => {
 };
 
 //@desc     CREATE NEW BOOTCAMPS
-//@routes   POST /api/v1/bootcamp
+//@routes   POST /api/v1/bootcamps
 //@access   private
 exports.createBootcamp = (req, res, next) => {
   res.status(200).json({ success: true, msg: 'create new Bootcamp' });
