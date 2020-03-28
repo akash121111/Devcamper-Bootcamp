@@ -16,11 +16,11 @@ const BootcampSchema = new mongoose.Schema({
   },
   website: {
     type: String,
-    required: [true, 'please add website'],
-    match: [
-      '^(https?://)?(((www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z‌​0-9]{0,61}[a-z0-9]\\‌​.[a-z]{2,6})|((\\d{1‌​,3}\\.){3}\\d{1,3}))‌​(:\\d{2,4})?(/[-\\w@‌​\\+\\.~#\\?&/=%]*)?$‌',
-      'website is not in a correct format'
-    ]
+    required: [true, 'please add website']
+    // match: [
+    //   '^(https?://)?(((www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z‌​0-9]{0,61}[a-z0-9]\\‌​.[a-z]{2,6})|((\\d{1‌​,3}\\.){3}\\d{1,3}))‌​(:\\d{2,4})?(/[-\\w@‌​\\+\\.~#\\?&/=%]*)?$‌',
+    //   'website is not in a correct format'
+    // ]
   },
   phone: {
     type: String,
@@ -44,12 +44,12 @@ const BootcampSchema = new mongoose.Schema({
     type: String,
     type: {
       type: String, // Don't do `{ location: { type: String } }`
-      enum: ['Point'], // 'location.type' must be 'Point'
-      required: true
+      enum: ['Point'] // 'location.type' must be 'Point'
+      // required: true
     },
     coordinates: {
       type: [Number],
-      required: true,
+      //required: true,
       index: '2dsphere'
     },
     formattedAddress: String,
@@ -59,7 +59,7 @@ const BootcampSchema = new mongoose.Schema({
     zincode: String,
     country: String
   },
-  carrers: {
+  careers: {
     type: [String],
     required: true,
     enum: [
