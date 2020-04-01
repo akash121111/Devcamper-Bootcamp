@@ -33,7 +33,7 @@ const BootcampSchema = new mongoose.Schema({
     type: String,
     required: [true, 'please add an address'],
     match: [
-      /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/gim,
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
       'Email should be in correct format'
     ]
   },
@@ -58,7 +58,7 @@ const BootcampSchema = new mongoose.Schema({
     street: String,
     city: String,
     state: String,
-    zincode: String,
+    zipcode: String,
     country: String
   },
   careers: {
@@ -67,7 +67,7 @@ const BootcampSchema = new mongoose.Schema({
     enum: [
       'Web Development',
       'Mobile Development',
-      'UI/UX Desiner',
+      'UI/UX',
       'Data Science',
       'Business',
       'Others'
@@ -115,12 +115,12 @@ BootcampSchema.pre('save', async function(next) {
   const loc = await geocoder.geocode(this.address);
   this.location = {
     type: 'point',
-    coordinates: [loc[0].latitude, loc[0].longitude],
+    coordinates: [loc[0].longitude, loc[0].latitude],
     formattedAddress: loc[0].formattedAddress,
     street: loc[0].streetName,
     city: loc[0].city,
     state: loc[0].stateCode,
-    zincode: loc[0].zipcode,
+    zipcode: loc[0].zipcode,
     country: loc[0].countryCode
   };
 
