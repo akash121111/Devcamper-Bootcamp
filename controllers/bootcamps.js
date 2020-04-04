@@ -32,7 +32,7 @@ exports.getBootcamps = asyncHandler(async (req, res, next) => {
 
   //finding resource
 
-  query = Bootcamp.find(JSON.parse(queryStr));
+  query = Bootcamp.find(JSON.parse(queryStr)).populate('cources');
 
   //select request
   if (req.query.select) {
