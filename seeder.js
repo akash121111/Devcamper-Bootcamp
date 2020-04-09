@@ -7,7 +7,7 @@ dotenv.config({ path: './config/config.env' });
 
 //load models
 
-const Bootcamp = require('./models/Bootcamps');
+const Bootcamp = require('./models/Bootcamp');
 
 const Course = require('./models/Course');
 
@@ -17,7 +17,7 @@ mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 });
 
 //read the json files
